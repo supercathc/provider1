@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: provider1
+
+  nacos:
+    discovery:
+      server-addr: 127.0.0.1:8848
+server:
+  port: 8080
+
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+#        errorDecoder: com.example.SimpleErrorDecoder
+#        retryer: com.example.SimpleRetryer
+#        defaultQueryParameters:
+#          query: queryValue
+#        defaultRequestHeaders:
+#          header: headerValue
+#        requestInterceptors:
+#          - com.example.FooRequestInterceptor
+#          - com.example.BarRequestInterceptor
+#        decode404: false
+#        encoder: com.example.SimpleEncoder
+#        decoder: com.example.SimpleDecoder
+#        contract: com.example.SimpleContract
+#        capabilities:
+#          - com.example.FooCapability
+#          - com.example.BarCapability
+#        metrics.enabled: false
