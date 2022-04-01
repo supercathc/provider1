@@ -95,48 +95,5 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.75</version>
         </dependency>
-
     </dependencies>
-    <profiles>
-        <profile>
-            <id>test2</id>   <!--为env起一个名字-->
-            <properties>
-                <env>test</env>
-            </properties>
-        </profile>
-        <profile>
-            <id>prod</id>
-            <properties>
-                <env>prod</env>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>  <!--默认加载uat，实际根据环境需求-->
-            </activation>
-        </profile>
-    </profiles>
-
-
-    <build>
-        <!--build标签中添加如下的配置-->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>   <!--指定文件下-->
-                <filtering>true</filtering>      <!--动态配置-->
-                <excludes>       <!--去除多余的文件-->
-                    <exclude>application.yml</exclude>
-                    <exclude>application-test.yml</exclude>
-                    <exclude>application-prod.yml</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>    <!--动态配置  ${env}-->
-                <includes>     <!--包含加载的文件（env  默认加载uat 具体看配置）-->
-                    <include>application-${env}.yml</include>
-                    <include>application.yml</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
-
 </project>
